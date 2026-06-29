@@ -24,18 +24,23 @@ faculty photo, ~99 paper PDFs, gallery photos) rather than hot-linked.
   - Doctoral Students (11) and Master's Students (3) — name + link buttons
     (Email/Homepage/Scholar/CV/GitHub/LinkedIn), **no photos**.
   - Alumni (28: 14 Ph.D. + 14 Master's) — grouped by degree, name + **current
-    position** in grey (scraped from the legacy site).
+    position** in grey.
+  - A combined **/people/** page (the nav "People" link) shows everyone together;
+    the dropdown still links to the individual pages.
 - **Research** — four areas (data-driven, easy to edit).
 - **Publications** — full list, **120 papers (2015–2026)** grouped by year in the
-  legacy format (venue, title, authors, venue/year). **99 paper PDFs are hosted
-  locally** in `assets/papers/` with a **PDF** download button; 8 paywalled ones
-  link out (**Paper ↗**).
-- **Gallery** — 23 lab photos as a horizontal (left-right) scroll collage.
-- **Branding** — real NSS logo + faculty photo borrowed from the legacy site.
+  legacy format (venue, title, authors, venue/year), each row with a **Paper**
+  button on the right. **99 paper PDFs hosted locally** in `assets/papers/`; 8
+  paywalled ones link out via the same button.
+- **Awards** — full list (8 years, 2018–2025) grouped by year → award → prize →
+  recipients (Korean names/competitions preserved from the original).
+- **Gallery** — 23 lab photos as a left-right carousel (prev/next arrows) with
+  event-name caption overlays.
+- **Branding** — transparent NSS logo + faculty photo from the legacy site.
 
-**Still to do / verify:** add awards content (page is a seed); fill missing
-student/alumni links; verify all names/emails; attach the custom domain. A few
-older paper entries may have minor formatting quirks worth a skim.
+**Still to do / verify:** add the social links that were decorative-only on the
+legacy site (the LinkedIn/GitHub icons there had no URL behind them — need real
+ones); verify names/emails; attach the custom domain.
 
 ## Architecture — Jekyll on GitHub Pages
 
@@ -60,7 +65,7 @@ docs/                          # GitHub Pages builds & serves this folder
   _data/
     research.yml news.yml                  # homepage sections
     publications.yml                        # 120 papers, by year
-    phd.yml masters.yml alumni.yml gallery.yml
+    phd.yml masters.yml alumni.yml awards.yml gallery.yml
   assets/
     css/style.css  js/main.js
     img/  nss-logo.png  seungwon-shin.jpg   # logo + faculty photo
@@ -99,6 +104,8 @@ Edit one file, commit, push — GitHub rebuilds automatically.
   **No photos** (privacy) — don't add image fields.
 - **Alumni:** `docs/_data/alumni.yml` — `group` ("Ph.D." or "Master's"), `name`,
   and `position` (current job, shown in grey). No links by design.
+- **Award:** `docs/_data/awards.yml` — `year` → `awards` (each `name` → `items`
+  of `prize` + `recipients`).
 - **Gallery photo:** drop the image in `docs/assets/img/gallery/`, then add
   `- file: "name.jpg"` (+ optional `alt:`) to `docs/_data/gallery.yml`.
 - **Research areas:** `docs/_data/research.yml` (drives homepage cards + /research/).

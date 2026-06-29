@@ -1,0 +1,98 @@
+# Awards grouped by year (newest first). Year -> award name -> prize + recipients.
+# Korean award/recipient names preserved from the original site.
+- year: "2025"
+  awards:
+    - name: "Annual Computer Security Applications Conference 2025 (ACSAC)"
+      items:
+        - prize: "Distinguished Paper Award MoEvil: Poisoning Expert to Compromise the Safety of Mixture-of-Experts LLMs"
+          recipients: "김재한, 나승호, 송민규, 신승원, 손수엘"
+    - name: "2025 사이버안보 논문 공모전"
+      items:
+        - prize: "장려상"
+          recipients: "유명성, 김이수, 신승원 · 김재한, 송민규, 신승원"
+- year: "2024"
+  awards:
+    - name: "2024 사이버안보 논문 공모전"
+      items:
+        - prize: "장려상"
+          recipients: "유명성, 신승원 · 김재한, 나승호, 신승원"
+- year: "2023"
+  awards:
+    - name: "2023 사이버안보 논문 공모전"
+      items:
+        - prize: "대상"
+          recipients: "유명성, 남재현, 신승원"
+        - prize: "최우수상"
+          recipients: "김재한, 송민규, 진영진, 신승원"
+        - prize: "우수상"
+          recipients: "김수련, 나승호, 신승원"
+        - prize: "장려상"
+          recipients: "김한나, 최건, 신승원 · 김재한, 송민규, 신승원 · 나승호, 조수민, 신승원 · 송민규, 김재한, 신승원"
+    - name: "2023 삼성휴먼테크논문대상​"
+      items:
+        - prize: "동상"
+          recipients: "김재한, 유명성, 신승원, 김진우"
+- year: "2022"
+  awards:
+    - name: "2022 사이버안보 논문 공모전"
+      items:
+        - prize: "우수상"
+          recipients: "유명성, 서현민, 최동민, 남재현, 신승원"
+    - name: "2022 삼성휴먼테크논문대상"
+      items:
+        - prize: "은상"
+          recipients: "김진우, 신승원"
+- year: "2021"
+  awards:
+    - name: "2021 삼성휴먼테크논문대상"
+      items:
+        - prize: "은상"
+          recipients: "박태준, 유명성, 최건, 진영진, 신승원"
+    - name: "2021 사이버안보 논문 공모전"
+      items:
+        - prize: "우수상"
+          recipients: "최진호, 신승원"
+        - prize: "장려상"
+          recipients: "서민재, 김진우, 김재한, 박태준, 유명성, 신승원"
+    - name: "제 5회 금융보안원 논문공모전"
+      items:
+        - prize: "최우수상"
+          recipients: "나승호, 김한나, 신승원"
+    - name: "2021 한국정보보호학회 호남지부 논문공모전"
+      items:
+        - prize: "최우수상"
+          recipients: "유명성, 김진우, 박태준, 신승원"
+- year: "2020"
+  awards:
+    - name: "2020 삼성휴먼테크논문대상"
+      items:
+        - prize: "은상"
+          recipients: "김진우, 남재현, 이수열, 신승원"
+    - name: "2020 사이버안보 논문 공모전"
+      items:
+        - prize: "우수상"
+          recipients: "이수열, 나승호, 이승현, 최건, 서민재, 신승원"
+    - name: "제 4회 금융보안원 논문공모전"
+      items:
+        - prize: "대상"
+          recipients: "나승호, 홍형권, 신승원"
+- year: "2019"
+  awards:
+    - name: "2019 사이버안보 논문 공모전"
+      items:
+        - prize: "최우수상"
+          recipients: "이승현, 서현민, 허환조, 신승원, Anduo Wang"
+        - prize: "장려상"
+          recipients: "강희도, 윤창훈, 손수엘, 신승원"
+- year: "2018"
+  awards:
+    - name: "2018 사이버안보 논문 공모전"
+      items:
+        - prize: "최우수상"
+          recipients: "강희도, 신승원, Vinod yegneswaran, Shalini Ghosh, Phillip Porras"
+        - prize: "우수상"
+          recipients: "김연근, 박태준, 신승원"
+    - name: "2018 한국컴퓨터종합학술대회"
+      items:
+        - prize: "우수논문상"
+          recipients: "이길호, 박태준, 김민수, 신승원, 신인식"

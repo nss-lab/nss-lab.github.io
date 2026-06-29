@@ -87,7 +87,7 @@ img { max-width: 100%; height: auto; }
   display: flex;
   align-items: center;
   justify-content: space-between;
-  min-height: 70px;
+  min-height: 84px;
 }
 
 .brand { display: flex; align-items: center; gap: 0.65rem; color: var(--navy-900); }
@@ -101,8 +101,8 @@ img { max-width: 100%; height: auto; }
   padding: 0.25rem 0.55rem;
   border-radius: var(--radius-sm);
 }
-.brand-text { display: flex; flex-direction: column; font-weight: 600; font-size: 0.95rem; line-height: 1.2; }
-.brand-text small { font-weight: 500; color: var(--muted); font-size: 0.72rem; letter-spacing: 0.5px; }
+.brand-text { display: flex; flex-direction: column; font-weight: 600; font-size: 1.19rem; line-height: 1.2; }
+.brand-text small { font-weight: 500; color: var(--muted); font-size: 0.9rem; letter-spacing: 0.5px; }
 
 .nav-list {
   display: flex;
@@ -319,7 +319,7 @@ img { max-width: 100%; height: auto; }
 /* ==========================================================================
    Logo, people positions, faculty, publications, gallery
    ========================================================================== */
-.brand-logo { height: 42px; width: auto; display: block; }
+.brand-logo { height: 52px; width: auto; display: block; }
 
 /* People: name stacked over position (left-aligned); links to the right */
 .person-row { align-items: center; }
@@ -350,6 +350,15 @@ img { max-width: 100%; height: auto; }
 .pub-info { margin: 0; font-size: 0.87rem; color: var(--muted); font-style: italic; }
 .pub-btn { flex: 0 0 auto; display: inline-block; padding: 0.42rem 1rem; font-size: 0.8rem; font-weight: 600; color: #fff; background: var(--navy); border-radius: 999px; white-space: nowrap; }
 .pub-btn:hover { background: var(--navy-700); color: #fff; text-decoration: none; }
+
+/* Awards: year -> award name -> prize + recipients */
+.award-group { margin-bottom: 1.4rem; }
+.award-year { text-align: left; color: var(--navy); margin: 1.6rem 0 0.8rem; padding-bottom: 0.4rem; border-bottom: 2px solid var(--line); }
+.award-item { padding: 0.7rem 0; border-bottom: 1px solid var(--line); }
+.award-item:last-child { border-bottom: none; }
+.award-name { margin: 0 0 0.3rem; font-weight: 700; color: var(--ink); }
+.award-line { margin: 0 0 0.15rem; font-size: 0.94rem; color: var(--ink); }
+.award-prize { font-weight: 700; color: var(--navy); }
 
 /* People combined page: faculty mini-card + subgroup headings */
 .faculty-mini { display: flex; align-items: center; gap: 1.2rem; margin-bottom: 0.5rem; }
