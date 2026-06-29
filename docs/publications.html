@@ -1,24 +1,33 @@
 ---
-layout: page
+layout: default
 permalink: /publications/
 title: Publication / Talk
-subtitle: Peer-reviewed papers, journals, and talks.
 ---
-{% for group in site.data.publications %}
-<section class="pub-group">
-  <h2 class="pub-year">{{ group.year }}</h2>
-  <ul class="pub-list">
-    {% for p in group.papers %}
-    <li class="pub-item">
-      <div class="pub-main">
-        <p class="pub-title">{% if p.venue %}<span class="pub-venue">({{ p.venue }})</span> {% endif %}<span class="pub-name">{{ p.title }}</span></p>
-        {% if p.authors %}<p class="pub-authors">{{ p.authors }}</p>{% endif %}
-        {% if p.info %}<p class="pub-info">{{ p.info }}</p>{% endif %}
-      </div>
-      {% if p.pdf %}<a class="pub-btn" href="{{ '/assets/papers/' | append: p.pdf | relative_url }}" target="_blank" rel="noopener">Paper</a>
-      {% elsif p.ext %}<a class="pub-btn" href="{{ p.ext }}" target="_blank" rel="noopener">Paper</a>{% endif %}
-    </li>
-    {% endfor %}
-  </ul>
+<section class="page-hero">
+  <div class="container">
+    <h1>Publication / Talk</h1>
+    <p class="page-subtitle">Peer-reviewed papers, journals, and talks.</p>
+  </div>
 </section>
-{% endfor %}
+<section class="section">
+  <div class="container">
+    {% for group in site.data.publications %}
+    <section class="pub-group">
+      <h2 class="pub-year">{{ group.year }}</h2>
+      <ul class="pub-list">
+        {% for p in group.papers %}
+        <li class="pub-item">
+          <div class="pub-main">
+            <p class="pub-title">{% if p.venue %}<span class="pub-venue">({{ p.venue }})</span> {% endif %}<span class="pub-name">{{ p.title }}</span></p>
+            {% if p.authors %}<p class="pub-authors">{{ p.authors }}</p>{% endif %}
+            {% if p.info %}<p class="pub-info">{{ p.info }}</p>{% endif %}
+          </div>
+          {% if p.pdf %}<a class="pub-btn" href="{{ '/assets/papers/' | append: p.pdf | relative_url }}" target="_blank" rel="noopener">Paper</a>
+          {% elsif p.ext %}<a class="pub-btn" href="{{ p.ext }}" target="_blank" rel="noopener">Paper</a>{% endif %}
+        </li>
+        {% endfor %}
+      </ul>
+    </section>
+    {% endfor %}
+  </div>
+</section>
