@@ -1,6 +1,7 @@
 # Research pillars (AI, Security, System).
 #   summary -> short text on the homepage cards
 #   detail + topics + image -> the /research/ page (alternating big figures)
+# detail/topics may contain inline HTML (paper/system names are wrapped in <strong>).
 # To swap a figure: drop a file in assets/img/research/ and update `image`.
 - title: AI
   image: ai.svg
@@ -10,16 +11,18 @@
   detail: >-
     AI is now both a target and a tool. We study how large language and multimodal
     models fail under adversarial pressure and how to make them dependable: jailbreaking
-    GPT-based text-to-image models (PC²), exposing and repairing the safety of
-    Mixture-of-Experts LLMs (MoEvil, SafeMoE), unlearning unsafe alignment, and
-    neutralizing backdoors planted during parameter-efficient fine-tuning (Obliviate,
-    Claim-Guided). In parallel we turn modern ML and NLP back on security itself —
-    pretrained dark-web language models (DarkBERT) and graph- and federated-learning
-    systems that predict credential reuse and surface illicit activity at scale.
+    GPT-based text-to-image models (<strong>PC²</strong>), exposing and repairing the
+    safety of Mixture-of-Experts LLMs (<strong>MoEvil</strong>, <strong>SafeMoE</strong>),
+    unlearning unsafe alignment, and neutralizing backdoors planted during
+    parameter-efficient fine-tuning (<strong>Obliviate</strong>,
+    <strong>Claim-Guided</strong>). In parallel we turn modern ML and NLP back on
+    security itself — pretrained dark-web language models (<strong>DarkBERT</strong>)
+    and graph- and federated-learning systems that predict credential reuse and
+    surface illicit activity at scale.
   topics:
-    - "LLM safety & jailbreaking — PC², SafeMoE, MoEvil"
-    - "Unlearning & backdoor defense — Obliviate, Claim-Guided"
-    - "ML / NLP for security — DarkBERT, federated & graph-based detection"
+    - "LLM safety & jailbreaking — <strong>PC²</strong>, <strong>SafeMoE</strong>, <strong>MoEvil</strong>"
+    - "Unlearning & backdoor defense — <strong>Obliviate</strong>, <strong>Claim-Guided</strong>"
+    - "ML / NLP for security — <strong>DarkBERT</strong>, federated & graph-based detection"
 - title: Security
   image: security.svg
   summary: >-
@@ -29,15 +32,17 @@
   detail: >-
     Our founding mission is to reveal threats and defend networked systems. We pair
     deep system understanding with large-scale measurement: tracing intrusions to
-    their root cause via security provenance (SECTRACER), fuzzing and fingerprinting
-    SDN/SD-WAN control planes (Ambusher, Heimdallr), uncovering micro-architectural
-    and timing side channels (AVXProbe, AVX-TSCHA), hardening anonymity networks and
-    topology against deanonymization (MUFLLER, EqualNet), and measuring permissionless
-    blockchains and their abuse (Partitioning Ethereum, illicit-Bitcoin detection).
+    their root cause via security provenance (<strong>SECTRACER</strong>), fuzzing and
+    fingerprinting SDN/SD-WAN control planes (<strong>Ambusher</strong>,
+    <strong>Heimdallr</strong>), uncovering micro-architectural and timing side channels
+    (<strong>AVXProbe</strong>, <strong>AVX-TSCHA</strong>), hardening anonymity networks
+    and topology against deanonymization (<strong>MUFLLER</strong>,
+    <strong>EqualNet</strong>), and measuring permissionless blockchains and their abuse
+    (<strong>Partitioning Ethereum</strong>, illicit-Bitcoin detection).
   topics:
-    - "Network, web & SDN security — SECTRACER, Ambusher"
-    - "Side-channel & micro-architectural attacks — AVXProbe, AVX-TSCHA"
-    - "Blockchain & threat intelligence — Partitioning Ethereum, Vulcan"
+    - "Network, web & SDN security — <strong>SECTRACER</strong>, <strong>Ambusher</strong>"
+    - "Side-channel & micro-architectural attacks — <strong>AVXProbe</strong>, <strong>AVX-TSCHA</strong>"
+    - "Blockchain & threat intelligence — <strong>Partitioning Ethereum</strong>, <strong>Vulcan</strong>"
 - title: System
   image: system.svg
   summary: >-
@@ -46,12 +51,14 @@
   detail: >-
     We build systems that deliver security and performance together, often pushing
     enforcement into hardware and the network data path. Recent work accelerates
-    service-mesh ingress with SmartNICs (HybridMesh, HardMesh), runs serverless
-    functions inside trusted execution with fast snapshots (AccelFaaS, TDSnap,
-    Cryonics), gives containers RDMA-aware and hardware-isolated networking (RDNet,
-    Hyperion, HardWhale), and embeds security into SDN/NFV with reconfigurable
-    hardware for line-rate inspection (Reinhardt).
+    service-mesh ingress with SmartNICs (<strong>HybridMesh</strong>,
+    <strong>HardMesh</strong>), runs serverless functions inside trusted execution with
+    fast snapshots (<strong>AccelFaaS</strong>, <strong>TDSnap</strong>,
+    <strong>Cryonics</strong>), gives containers RDMA-aware and hardware-isolated
+    networking (<strong>RDNet</strong>, <strong>Hyperion</strong>,
+    <strong>HardWhale</strong>), and embeds security into SDN/NFV with reconfigurable
+    hardware for line-rate inspection (<strong>Reinhardt</strong>).
   topics:
-    - "SmartNIC & service-mesh acceleration — HybridMesh, HardMesh"
-    - "Confidential serverless / FaaS — AccelFaaS, TDSnap, Cryonics"
-    - "Secure container & in-network systems — RDNet, Hyperion, Reinhardt"
+    - "SmartNIC & service-mesh acceleration — <strong>HybridMesh</strong>, <strong>HardMesh</strong>"
+    - "Confidential serverless / FaaS — <strong>AccelFaaS</strong>, <strong>TDSnap</strong>, <strong>Cryonics</strong>"
+    - "Secure container & in-network systems — <strong>RDNet</strong>, <strong>Hyperion</strong>, <strong>Reinhardt</strong>"
