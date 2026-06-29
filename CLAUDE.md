@@ -110,7 +110,10 @@ Edit one file, commit, push — GitHub rebuilds automatically.
   of `prize` + `recipients`).
 - **Gallery photo:** drop the image in `docs/assets/img/gallery/`, then add
   `- file: "name.jpg"` (+ optional `alt:`) to `docs/_data/gallery.yml`.
-- **Research areas:** `docs/_data/research.yml` (drives homepage cards + /research/).
+- **Research areas:** `docs/_data/research.yml` — `title`, `summary` (homepage
+  card), `detail` + `topics` (the /research/ feature rows), and `image` (figure in
+  `assets/img/research/`). The three figures are **sample SVG illustrations** —
+  replace the file (or change `image`) to drop in a real paper figure.
 - **Contact / lab name:** `docs/_config.yml`. **Nav / footer:** the includes.
 
 ## Local preview (optional — GitHub builds for you)

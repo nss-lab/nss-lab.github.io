@@ -1,14 +1,33 @@
 ---
-layout: page
+layout: default
 permalink: /research/
 title: Research
-subtitle: Three pillars that drive our work — AI, Security, and Systems.
 ---
-<div class="research-detail">
-  {% for area in site.data.research %}
-  <article class="research-block">
-    <h2>{{ area.title }}</h2>
-    <p>{{ area.summary }}</p>
-  </article>
-  {% endfor %}
-</div>
+<section class="page-hero">
+  <div class="container">
+    <h1>Research</h1>
+    <p class="page-subtitle">Three pillars that drive our work — AI, Security, and Systems.</p>
+  </div>
+</section>
+<section class="section">
+  <div class="container">
+    <div class="research-features">
+      {% for area in site.data.research %}
+      <section class="research-feature">
+        <div class="rf-text">
+          <h2>{{ area.title }}</h2>
+          <p>{{ area.detail }}</p>
+          {% if area.topics %}
+          <ul class="rf-topics">
+            {% for t in area.topics %}<li>{{ t }}</li>{% endfor %}
+          </ul>
+          {% endif %}
+        </div>
+        <div class="rf-media">
+          <img src="{{ '/assets/img/research/' | append: area.image | relative_url }}" alt="{{ area.title }} research illustration">
+        </div>
+      </section>
+      {% endfor %}
+    </div>
+  </div>
+</section>

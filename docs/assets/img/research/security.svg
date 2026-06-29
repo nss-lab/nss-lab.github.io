@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 800 560" role="img" aria-label="Security research">
+<defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#000080"/><stop offset="1" stop-color="#07073f"/></linearGradient></defs>
+<rect width="800" height="560" fill="url(#g)"/>
+<path d="M400,95 L575,165 L575,305 C575,420 490,475 400,505 C310,475 225,420 225,305 L225,165 Z" fill="#ffffff" fill-opacity="0.06" stroke="#fff" stroke-width="3.5" stroke-linejoin="round"/>
+<circle cx="400" cy="280" r="34" fill="none" stroke="#9fb2ff" stroke-width="7"/>
+<path d="M388,300 L412,300 L420,365 L380,365 Z" fill="#9fb2ff"/>
+</svg>

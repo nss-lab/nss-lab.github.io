@@ -35,7 +35,7 @@
   // Gallery carousel: prev/next buttons page through the strip
   var strip = document.getElementById("galleryStrip");
   if (strip) {
-    var step = function () { return Math.max(strip.clientWidth * 0.85, 320); };
+    var step = function () { return strip.clientWidth; };
     var prev = document.querySelector(".gallery-prev");
     var next = document.querySelector(".gallery-next");
     if (prev) prev.addEventListener("click", function () { strip.scrollBy({ left: -step(), behavior: "smooth" }); });
