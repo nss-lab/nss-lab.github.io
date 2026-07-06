@@ -8,7 +8,7 @@ title: Faculty
   <div class="faculty-info">
     <h2>Seungwon Shin</h2>
     <p class="faculty-title">Associate Professor, School of Electrical Engineering, KAIST<br>Principal Investigator, Network and System Security (NSS) Laboratory</p>
-    <p>Prof. Shin's research centers on revealing and understanding emerging threats and on designing new systems and algorithms that make computing secure. His current focus spans the security of AI and large language models, secure and high-performance systems, and network and cyber-threat-intelligence security.</p>
+    <p>Professor Seungwon Shin focuses his research on network, system, and artificial intelligence security. He investigates the security of Large Language Models (LLMs) and generative AI, specifically focusing on jailbreaking attacks on text-to-image models and safe fine-tuning for Mixture-of-Experts (MoE) architectures. His work also covers cloud computing optimization, where he designs methods to accelerate Function-as-a-Service (FaaS) performance and ensure secure executions using Trusted Domain Snapshots. In network infrastructure, he develops hardware-software hybrid systems to improve service mesh ingress performance. Additionally, his research encompasses dark web threat intelligence, cybercrime tracking, and programmable network security automation.</p>
     <p>Before joining KAIST in 2013, he spent nine years in industry developing networking systems. He has been a visiting scientist at MIT and interned at SRI International, and has served as a research associate with the Open Networking Foundation (ONF) security working group.</p>
     <h3>Education</h3>
     <ul>
