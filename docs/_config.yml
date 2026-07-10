@@ -9,7 +9,7 @@ lang: en
 
 # Shared contact details (edit here once; used across the site).
 lab_email: nsslab@kaist.ac.kr
-address: "291 Daehak-ro, Yuseong-gu, Daejeon, Korea"
+address: "N1 Building, Room 820, 291 Daehak-ro, Yuseong-gu, Daejeon, Korea"
 
 # --- URLs ---
 # Served at the custom domain declared in docs/CNAME, so the site sits at the
