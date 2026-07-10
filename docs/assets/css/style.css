@@ -64,7 +64,7 @@ img { max-width: 100%; height: auto; }
   transition: transform 0.12s ease, background 0.18s ease, color 0.18s ease;
 }
 .btn:hover { text-decoration: none; transform: translateY(-2px); }
-.btn-primary { background: var(--navy); color: #fff; }
+.btn-primary { background: var(--navy); color: #fff; border-color: #fff; }
 .btn-primary:hover { background: var(--navy-700); }
 .btn-ghost { border-color: rgba(255, 255, 255, 0.6); color: #fff; }
 .btn-ghost:hover { background: rgba(255, 255, 255, 0.12); }
