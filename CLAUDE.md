@@ -21,18 +21,52 @@ The site is **content/data-driven**: almost everything you'd revise lives in
   ("Deploy from a branch → main / /docs"). Do **not** add a `.nojekyll` file (it
   disables the Jekyll build).
 - A failed build keeps the last good version live and emails the error.
-- **URL:** https://nss-lab.github.io/web/ → `baseurl: "/web"` in `_config.yml`.
-  Use the `relative_url` filter for every internal link/asset so it respects baseurl.
-- **Custom domain (nss.kaist.ac.kr):** set `baseurl: ""` in `_config.yml` and add
-  `docs/CNAME` containing the domain (DNS handled by KAIST).
+- **URL:** https://nss.kaist.ac.kr/ — the site is served at the domain root, so
+  `baseurl: ""`. Still use `relative_url` for every internal link/asset.
+- The repo is named **`nss-lab/nss-lab.github.io`** so Pages serves it as the
+  organization site (no `/web/` path segment). Renaming it back would reintroduce one.
+- **Custom domain:** `docs/CNAME` holds `nss.kaist.ac.kr`; KAIST's DNS has a CNAME
+  to `nss-lab.github.io` plus the `_github-pages-challenge-nss-lab` TXT record that
+  GitHub required before it would accept the domain. `nss-lab.github.io` now
+  permanently redirects to the custom domain.
 - Commit/push only when asked. Pushing to `main` is correct here (it's the deploy
-  branch); the account in use has write access to `nss-lab/web`.
+  branch); the account in use has **push but not admin** — anything under repo
+  Settings (custom domain, Enforce HTTPS, rename) must be done by an org owner.
+
+### Cloudflare mirror (optional, `web.isukim.workers.dev`)
+
+A Workers static-assets project mirrors the site. It is a spare, not the real host:
+a Worker custom domain requires the whole `kaist.ac.kr` zone on the Cloudflare
+account, which KAIST will never delegate, so the KAIST domain can only live on
+GitHub Pages. Workers Builds settings (dashboard, not in-repo):
+
+| Field | Value |
+| --- | --- |
+| Root directory | `docs` |
+| Build command | `LANG=C.UTF-8 bundle exec jekyll build --baseurl ""` |
+| Deploy command | `npx wrangler deploy` |
+
+`docs/wrangler.jsonc` supplies the output directory — Workers Builds has no "build
+output directory" field (that is Pages-only). **`LANG=C.UTF-8` is required:** the
+`github-pages` gem defaults the theme to `jekyll-theme-primer`, whose unused
+`style.scss` holds a UTF-8 en dash, and Cloudflare's build container sets no locale,
+so Ruby reads it as US-ASCII and the build dies. `--baseurl ""` is now a redundant
+no-op (it matches `_config.yml`), harmless to leave.
+
+### Analytics
+
+Cloudflare Web Analytics, beacon in `_layouts/default.html` (which `page.html`
+inherits, so every page is covered). Free, cookieless, gives pageviews / visitors /
+country. It is client-side, so it reports whatever hostname served the page and
+works on any host — GitHub Pages included. It cannot see PDF downloads.
 
 ## Repository layout
 
 ```
 docs/
   _config.yml                 # title, baseurl, lab_email, address
+  CNAME                       # custom domain (nss.kaist.ac.kr)
+  wrangler.jsonc              # Cloudflare mirror only; excluded from the Jekyll build
   Gemfile                     # local preview only (github-pages gem)
   index.html                  # Homepage            (layout: default, full width)
   research.html               # /research/          (layout: default, full width)
@@ -146,7 +180,7 @@ to compile a serve-only native extension — local tooling only.
   when available.
 - **Award romanizations** — five non-lab co-author names were best-effort and
   worth verifying: Geon Choi, Sumin Cho, Gilho Lee, Minsu Kim, Hyeonggwon Hong.
-- **Custom domain** — attach `nss.kaist.ac.kr` (baseurl + CNAME, see above).
+- **Legacy server** — `143.248.56.137` no longer receives traffic; it can be retired.
 
 ## Conventions & gotchas
 
