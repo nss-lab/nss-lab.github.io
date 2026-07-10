@@ -12,10 +12,10 @@ lab_email: nsslab@kaist.ac.kr
 address: "291 Daehak-ro, Yuseong-gu, Daejeon, Korea"
 
 # --- URLs ---
-# Project site lives at https://nss-lab.github.io/web
-# When a custom domain (e.g. nss.kaist.ac.kr) is attached, set baseurl to "".
-url: "https://nss-lab.github.io"
-baseurl: "/web"
+# Served at the custom domain declared in docs/CNAME, so the site sits at the
+# root. nss-lab.github.io/web/ redirects here.
+url: "https://nss.kaist.ac.kr"
+baseurl: ""
 
 # --- Build settings ---
 markdown: kramdown
