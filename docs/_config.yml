@@ -26,3 +26,4 @@ exclude:
   - vendor
   - .bundle
   - README.md
+  - wrangler.jsonc
