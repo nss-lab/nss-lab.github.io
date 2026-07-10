@@ -21,7 +21,7 @@
     (<strong>PassREfinder</strong>), and illicit drug detection in online communities
     (<strong>JEDIS</strong>).
   topics:
-    - "Adversarial ML — <strong>PC²</strong>, <strong>SafeMoE</strong>, <strong>MoEvil</strong>, <strong>Obliviate</strong>, <strong>CGBA</strong>, Unlearning Attacks"
+    - "Adversarial ML — <strong>PC²</strong>, <strong>SafeMoE</strong>, <strong>MoEvil</strong>, <strong>Obliviate</strong>, <strong>CGBA</strong>, <strong>Refusal Is Not an Option</strong>"
     - "AI for Security — <strong>DarkBERT</strong>, <strong>PassREfinder</strong>, <strong>JEDIS</strong>"
     - "AI Misuse — <strong>When LLMs Go Online</strong>"
 - title: Security
