@@ -9,20 +9,21 @@
     Securing modern AI and using AI for security — from jailbreaking and safely
     fine-tuning large language models to ML/NLP methods that detect threats at scale.
   detail: >-
-    AI is now both a target and a tool. We study how large language and multimodal
-    models fail under adversarial pressure and how to make them dependable: jailbreaking
-    GPT-based text-to-image models (<strong>PC²</strong>), exposing and repairing the
-    safety of Mixture-of-Experts LLMs (<strong>MoEvil</strong>, <strong>SafeMoE</strong>),
-    unlearning unsafe alignment, and neutralizing backdoors planted during
-    parameter-efficient fine-tuning (<strong>Obliviate</strong>,
-    <strong>Claim-Guided</strong>). In parallel we turn modern ML and NLP back on
-    security itself — pretrained dark-web language models (<strong>DarkBERT</strong>)
-    and graph- and federated-learning systems that predict credential reuse and
-    surface illicit activity at scale.
+    AI is now both a target and an instrument of security research. We study how AI
+    systems fail under adversarial pressure and how to make them more reliable, robust,
+    and trustworthy. Our work examines jailbreak attacks against text-to-image models
+    (<strong>PC²</strong>), safety vulnerabilities and defenses in Mixture-of-Experts
+    LLMs (<strong>MoEvil</strong>, <strong>SafeMoE</strong>), unlearning-based
+    adversarial attacks, and backdoor attacks and defenses (<strong>Obliviate</strong>,
+    <strong>CGBA</strong>). In parallel, we apply modern machine learning and natural
+    language processing techniques to security problems, including pretrained dark-web
+    language models (<strong>DarkBERT</strong>), credential reuse prediction at scale
+    (<strong>PassREfinder</strong>), and illicit drug detection in online communities
+    (<strong>JEDIS</strong>).
   topics:
-    - "LLM safety & jailbreaking — <strong>PC²</strong>, <strong>SafeMoE</strong>, <strong>MoEvil</strong>"
-    - "Unlearning & backdoor defense — <strong>Obliviate</strong>, <strong>Claim-Guided</strong>"
-    - "ML / NLP for security — <strong>DarkBERT</strong>, federated & graph-based detection"
+    - "Adversarial ML — <strong>PC²</strong>, <strong>SafeMoE</strong>, <strong>MoEvil</strong>, <strong>Obliviate</strong>, <strong>CGBA</strong>, Unlearning Attacks"
+    - "AI for Security — <strong>DarkBERT</strong>, <strong>PassREfinder</strong>, <strong>JEDIS</strong>"
+    - "AI Misuse — <strong>When LLMs Go Online</strong>"
 - title: Security
   image: security.svg
   summary: >-
