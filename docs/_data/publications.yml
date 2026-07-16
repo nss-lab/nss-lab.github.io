@@ -1,13 +1,6 @@
 # Full publication list grouped by year (newest first).
 # Each paper: venue, title, authors, info; plus pdf (file in assets/papers/) OR ext (external URL).
 # Add a paper by copying a block under the right year.
-- year: "2027"
-  papers:
-    - venue: "TEST"
-      title: "Test Publication (safe to delete)"
-      authors: "Test Author, Seungwon Shin"
-      info: "Test Venue (TEST), 2027"
-      pdf: "test2027-author.pdf"
 - year: "2026"
   papers:
     - venue: "CCS"
