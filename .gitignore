@@ -13,3 +13,7 @@ Gemfile.lock
 .DS_Store
 Thumbs.db
 *.swp
+
+# Python bytecode (from the add-publication script/tests)
+__pycache__/
+*.pyc

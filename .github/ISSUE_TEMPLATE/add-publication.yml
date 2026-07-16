@@ -1,0 +1,66 @@
+name: Add a publication
+description: Add one paper to the Publications page — attach the PDF and the site does the rest.
+title: "[publication] "
+labels: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Fill this in to add **one** paper. Empty optional fields are fine. Then a lab
+        maintainer applies a label:
+        - **`publication-check`** — a safe dry run: validates everything and replies
+          with a preview, but commits nothing.
+        - **`publication`** — publishes for real: renames the PDF to our convention,
+          updates `publications.yml`, and rebuilds the site.
+  - type: input
+    id: year
+    attributes:
+      label: Year
+      description: Four digits. A new year section is created automatically if there isn't one yet.
+      placeholder: "2026"
+    validations:
+      required: true
+  - type: input
+    id: venue
+    attributes:
+      label: Venue tag
+      description: The short tag shown in parentheses in the list — e.g. NDSS, CCS, Usenix Security.
+      placeholder: "NDSS"
+    validations:
+      required: true
+  - type: textarea
+    id: title
+    attributes:
+      label: Title
+      description: The paper title, exactly as it should appear.
+    validations:
+      required: true
+  - type: input
+    id: authors
+    attributes:
+      label: Authors
+      description: Full author line. Mark co-first authors with * and add "(* Co-first author)" if you use it.
+      placeholder: "Myoungsung You, Jaehyun Nam, Minjae Seo, Taejune Park, Seungwon Shin"
+  - type: input
+    id: info
+    attributes:
+      label: Info line
+      description: The grey line under the title — full venue name, year, and any status such as "(to appear)".
+      placeholder: "USENIX Networked Systems Design and Implementation (NSDI), 2026 (to appear)"
+  - type: textarea
+    id: pdf
+    attributes:
+      label: Paper PDF
+      description: Drag-and-drop the PDF into this box (or click to attach). Leave empty for a paywalled paper and fill in the external link below instead.
+      placeholder: "Drop the PDF here…"
+  - type: input
+    id: ext
+    attributes:
+      label: External link
+      description: Use this instead of a PDF for paywalled papers — the "Paper" button will point here.
+      placeholder: "https://openreview.net/forum?id=…"
+  - type: input
+    id: filename
+    attributes:
+      label: Filename override
+      description: Optional. Leave blank to auto-name as venuetag+year-firstauthor.pdf. Set only if you want a specific filename.

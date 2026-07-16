@@ -1,0 +1,134 @@
+name: Add publication from issue
+
+# A maintainer labels an "Add a publication" issue:
+#   * "publication-check" -> dry run: validate + preview, commit nothing.
+#   * "publication"       -> publish: rename the PDF, edit publications.yml,
+#                            commit to main, and rebuild GitHub Pages.
+#
+# Applying a label needs write access, so the label *is* the authorization gate:
+# a random visitor can open the form but cannot trigger a publish. The dry run
+# runs the full pipeline in the runner's working tree and just doesn't commit,
+# so it is a genuine end-to-end check with zero risk.
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write   # commit the PDF + YAML to main (publish only)
+  issues: write     # comment on / close the issue
+  pages: write      # request an on-demand Pages build (publish only)
+
+concurrency:
+  group: add-publication-${{ github.event.issue.number }}
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    if: github.event.label.name == 'publication' || github.event.label.name == 'publication-check'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Decide dry-run vs publish
+        id: mode
+        env:
+          LABEL: ${{ github.event.label.name }}
+        run: |
+          if [ "$LABEL" = "publication-check" ]; then
+            echo "dry_run=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "dry_run=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: Check out main
+        uses: actions/checkout@v4
+        with:
+          ref: main
+          fetch-depth: 1
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.x"
+
+      - name: Parse issue, validate, fetch PDF, update publications.yml
+        id: build
+        env:
+          ISSUE_BODY: ${{ github.event.issue.body }}
+        run: python3 .github/scripts/add_publication.py
+
+      - name: Confirm publications.yml still parses
+        run: |
+          python3 -m pip install --quiet pyyaml
+          python3 - <<'PY'
+          import yaml
+          with open("docs/_data/publications.yml", encoding="utf-8") as fh:
+              data = yaml.safe_load(fh)
+          assert isinstance(data, list) and data, "publications.yml is not a non-empty list"
+          n = sum(len(g.get("papers", [])) for g in data)
+          print(f"publications.yml parses cleanly: {n} papers across {len(data)} years")
+          PY
+
+      - name: Commit to main
+        id: commit
+        if: success() && steps.mode.outputs.dry_run != 'true'
+        env:
+          FILENAME: ${{ steps.build.outputs.filename }}
+          TITLE: ${{ steps.build.outputs.title }}
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add docs/_data/publications.yml
+          if [ -n "$FILENAME" ]; then git add "docs/assets/papers/$FILENAME"; fi
+          git commit -m "Add publication: $TITLE (#${{ github.event.issue.number }})"
+          git push origin HEAD:main
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Request a Pages build
+        if: success() && steps.mode.outputs.dry_run != 'true'
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh api --method POST "repos/${{ github.repository }}/pages/builds" \
+            || echo "Build request returned non-zero; the push may rebuild on its own."
+
+      - name: Comment the result
+        if: success()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          DRY_RUN: ${{ steps.mode.outputs.dry_run }}
+          FILENAME: ${{ steps.build.outputs.filename }}
+          TITLE: ${{ steps.build.outputs.title }}
+          YEAR: ${{ steps.build.outputs.year }}
+          SHA: ${{ steps.commit.outputs.sha }}
+          WARN: ${{ steps.build.outputs.warnings }}
+        run: |
+          if [ -n "$FILENAME" ]; then
+            FILE_LINE=$(printf 'PDF saved as `%s`' "$FILENAME")
+          else
+            FILE_LINE='linked as an external paper (no PDF)'
+          fi
+          if [ -n "$WARN" ]; then
+            WARN_BLOCK=$(printf '\n\n**Heads-up:**\n%s' "$WARN")
+          else
+            WARN_BLOCK=''
+          fi
+          if [ "$DRY_RUN" = "true" ]; then
+            BODY=$(printf '🔍 **Dry run passed — nothing committed.**\n\nWould add **%s** under %s (%s), and the file still parses.%s\n\nWhen it looks right, remove `publication-check` and add the **`publication`** label to publish for real.' "$TITLE" "$YEAR" "$FILE_LINE" "$WARN_BLOCK")
+            gh issue comment "$ISSUE_NUMBER" --body "$BODY"
+          else
+            BODY=$(printf '✅ **Published %s** under %s — %s.\n\nCommitted in `%s`; the site rebuilds in a minute or two.%s' "$TITLE" "$YEAR" "$FILE_LINE" "$SHA" "$WARN_BLOCK")
+            gh issue comment "$ISSUE_NUMBER" --body "$BODY"
+            gh issue close "$ISSUE_NUMBER" --reason completed
+          fi
+
+      - name: Report failure on the issue
+        if: failure()
+        env:
+          GH_TOKEN: ${{ github.token }}
+          ISSUE_NUMBER: ${{ github.event.issue.number }}
+          ERR: ${{ steps.build.outputs.error }}
+          RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+        run: |
+          MSG="${ERR:-Something went wrong. Check the run log for details.}"
+          BODY=$(printf '❌ **Could not process this paper.**\n\n%s\n\nFix it above, then remove and re-add the label to try again.\n\n[Run log](%s)' "$MSG" "$RUN_URL")
+          gh issue comment "$ISSUE_NUMBER" --body "$BODY"
