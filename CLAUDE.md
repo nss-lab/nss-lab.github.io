@@ -89,9 +89,10 @@ docs/
     img/research/ai.svg security.svg system.svg   # sample pillar illustrations
     papers/*.pdf                 # 99 paper PDFs (~252 MB)
 .github/                         # publication-by-issue automation (not published)
-  ISSUE_TEMPLATE/add-publication.yml   # the "Add a publication" issue form
-  workflows/add-publication.yml        # issue -> rename PDF, edit YAML, deploy
-  scripts/add_publication.py           # form parser + YAML text-inserter (stdlib)
+  ISSUE_TEMPLATE/add-publication.yml   # "Add / update a publication" issue form
+  workflows/add-publication.yml        # issue -> add/update/delete pub, deploy
+  scripts/add_publication.py           # form parser + YAML editor (stdlib only)
+  scripts/testdata/test.pdf            # tiny valid PDF fixture for testing
 CLAUDE.md  README.md  .gitignore  # repo root (not published)
 ```
 
@@ -142,50 +143,56 @@ Edit a YAML file, commit, push — GitHub rebuilds. Schemas:
 - **Contact / lab name** `_config.yml` (`lab_email`, `address`, `title`).
 - **Nav / footer** — `_includes/header.html` / `footer.html`.
 
-### Adding a publication from a GitHub issue (automated)
+### Managing publications from a GitHub issue (automated)
 
-You can add a paper from the **Issues** tab instead of hand-editing YAML:
+You can add / update / delete a paper from the **Issues** tab instead of
+hand-editing YAML. **New issue → "Add / update a publication"**, pick an
+**Operation**, fill the fields, and submit:
 
-1. **New issue → "Add a publication"**, fill in year / venue tag / title /
-   authors / info line, and **drag the PDF into the "Paper PDF" box** (or give an
-   external link for a paywalled paper). Submit.
-2. A maintainer eyeballs it and applies a label. The label is both the trigger
-   *and* the permission gate — only someone with write access can apply one, so a
-   visitor can file the form but cannot publish:
-   - **`publication-check`** — dry run: runs the whole pipeline in the runner and
-     replies with a preview + any warnings, but **commits nothing**. Safe to run
-     anytime to validate an entry.
-   - **`publication`** — publishes for real.
-3. `.github/workflows/add-publication.yml` then downloads + validates the PDF,
-   renames it to `<venuetag><year>-<firstauthor>.pdf` (deduped `-2`, `-3` on
-   collision), inserts a matching entry as the newest paper of its year in
-   `publications.yml` (creating the year group in the right spot if it's new),
-   and — for `publication` only — commits to `main` and forces a Pages rebuild via
-   `POST /pages/builds`. It comments the result on the issue and closes it; on any
-   problem it comments what went wrong and leaves it open (re-add the label to retry).
+- **Add a new publication** — needs year + venue tag + title. Drag the PDF into
+  the "Paper PDF" box, *or* give an external link, *or* leave both empty for an
+  **announce-only "to appear"** entry (many real entries have no PDF/link).
+- **Update an existing publication** — paste the paper's exact **Title** to find
+  it, then attach a PDF / external link (replacing whatever it had) and/or change
+  its venue / authors / info in place. (Stays in its year; to move years, delete
+  and re-add.)
+- **Delete a publication** — paste the exact **Title**; removes the entry and its
+  PDF, and drops the year group if it becomes empty. (Mainly for cleaning up tests.)
+
+Then a maintainer applies a label — both the trigger *and* the permission gate,
+since only write access can label, so a visitor can file the form but not apply it:
+- **`publication-check`** — dry run: runs the whole pipeline in the runner and
+  replies with a preview + any warnings, but **commits nothing**. Safe anytime.
+- **`publication`** — applies it for real: commits to `main` and forces a Pages
+  rebuild via `POST /pages/builds`, then comments the result and closes the issue.
+  On any problem it comments what went wrong and leaves it open (re-add the label
+  to retry). PDFs are named `<venuetag><year>-<firstauthor>.pdf` (deduped `-2`, `-3`).
 
 **Rigorous checks (hard errors block; warnings just get reported):** required
 fields present, year four digits and in a sane range, PDF has a real `%PDF`
 header + `%%EOF` (not a truncated upload or a saved web page), the exact PDF isn't
 already hosted (content hash) and the exact title isn't already listed, a valid
-http(s) external link when there's no PDF. Warnings cover things like a venue
-"tag" that's really a full name, an author list with no "Shin", or an info line
-missing the year.
+http(s) external link, an update/delete target that actually exists. Warnings
+cover a venue "tag" that's really a full name, an author list with no "Shin", or
+an info line missing the year.
 
-The YAML is changed by **targeted text insertion** (`.github/scripts/add_publication.py`,
-Python stdlib only), so only the new lines move — comments, quoting, and order
-stay put. A CI step `safe_load`s the file to prove it still parses before the
-commit. All issue text is untrusted: it reaches the script via an env var (never
-the shell), and downloads are restricted to GitHub's attachment hosts.
+publications.yml is edited by **targeted text** work (`.github/scripts/add_publication.py`,
+Python stdlib only) — a new entry is inserted, and update/delete rewrite or drop
+only the matched entry's lines — so the rest of the file stays byte-for-byte
+unchanged. A CI step `safe_load`s the whole file to prove it still parses before
+any commit. All issue text is untrusted: it reaches the script via an env var
+(never the shell), and downloads are restricted to GitHub's attachment hosts.
+`.github/scripts/testdata/test.pdf` is a tiny valid PDF fixture for exercising the
+PDF path (reference its `raw.githubusercontent.com` URL in a dry-run issue).
 
 **One-time setup (needs an org owner):**
 - Create two repo **labels**: `publication` and `publication-check`
-  (Issues → Labels → New label).
+  (Issues → Labels → New label). *(Done.)*
 - *Settings → Actions → General → Workflow permissions* → **Read and write
   permissions**. No secret and no PR-creation toggle are needed — this flow
   commits straight to `main` and triggers the rebuild through the Pages API.
-- The repo must be public (it is) so the attachment PDF is fetchable, and `main`
-  must let the Actions bot push (no blocking branch protection).
+  *(Confirmed working: the bot commits and comments, and `main` is unprotected.)*
+- The repo must be public (it is) so the attachment PDF is fetchable.
 
 ### People include
 

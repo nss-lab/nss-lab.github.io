@@ -1,40 +1,51 @@
-name: Add a publication
-description: Add one paper to the Publications page — attach the PDF and the site does the rest.
+name: Add / update a publication
+description: Add, update, or remove a paper on the Publications page.
 title: "[publication] "
 labels: []
 body:
   - type: markdown
     attributes:
       value: |
-        Fill this in to add **one** paper. Empty optional fields are fine. Then a lab
-        maintainer applies a label:
-        - **`publication-check`** — a safe dry run: validates everything and replies
+        Manage one paper on the Publications page. Empty optional fields are fine.
+        A lab maintainer then applies a label:
+        - **`publication-check`** — safe dry run: validates everything and replies
           with a preview, but commits nothing.
-        - **`publication`** — publishes for real: renames the PDF to our convention,
-          updates `publications.yml`, and rebuilds the site.
-  - type: input
-    id: year
+        - **`publication`** — applies it for real and rebuilds the site.
+  - type: dropdown
+    id: operation
     attributes:
-      label: Year
-      description: Four digits. A new year section is created automatically if there isn't one yet.
-      placeholder: "2026"
-    validations:
-      required: true
-  - type: input
-    id: venue
-    attributes:
-      label: Venue tag
-      description: The short tag shown in parentheses in the list — e.g. NDSS, CCS, Usenix Security.
-      placeholder: "NDSS"
+      label: Operation
+      description: >
+        Add a new paper, update an existing one (attach a PDF/link or fix details),
+        or delete one. Update and Delete find the paper by its exact **Title** below.
+      options:
+        - Add a new publication
+        - Update an existing publication
+        - Delete a publication
+      default: 0
     validations:
       required: true
   - type: textarea
     id: title
     attributes:
       label: Title
-      description: The paper title, exactly as it should appear.
+      description: >
+        The paper title. For **Add** this is the new title; for **Update**/**Delete**
+        paste the existing paper's title exactly so it can be found.
     validations:
       required: true
+  - type: input
+    id: year
+    attributes:
+      label: Year
+      description: Four digits. Required to **Add**; a new year section is created if needed.
+      placeholder: "2026"
+  - type: input
+    id: venue
+    attributes:
+      label: Venue tag
+      description: Short tag shown in parentheses — e.g. NDSS, CCS, Usenix Security. Required to **Add**.
+      placeholder: "NDSS"
   - type: input
     id: authors
     attributes:
@@ -51,16 +62,18 @@ body:
     id: pdf
     attributes:
       label: Paper PDF
-      description: Drag-and-drop the PDF into this box (or click to attach). Leave empty for a paywalled paper and fill in the external link below instead.
+      description: >
+        Drag-and-drop the PDF here (or click to attach). Leave empty for an
+        announce-only "to appear" paper, or when using the external link below.
       placeholder: "Drop the PDF here…"
   - type: input
     id: ext
     attributes:
       label: External link
-      description: Use this instead of a PDF for paywalled papers — the "Paper" button will point here.
+      description: Use instead of a PDF for a paywalled paper — the "Paper" button points here.
       placeholder: "https://openreview.net/forum?id=…"
   - type: input
     id: filename
     attributes:
       label: Filename override
-      description: Optional. Leave blank to auto-name as venuetag+year-firstauthor.pdf. Set only if you want a specific filename.
+      description: Optional. Leave blank to auto-name as venuetag+year-firstauthor.pdf.

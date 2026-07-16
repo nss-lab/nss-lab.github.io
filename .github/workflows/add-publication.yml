@@ -71,14 +71,19 @@ jobs:
         id: commit
         if: success() && steps.mode.outputs.dry_run != 'true'
         env:
-          FILENAME: ${{ steps.build.outputs.filename }}
+          OPERATION: ${{ steps.build.outputs.operation }}
           TITLE: ${{ steps.build.outputs.title }}
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add docs/_data/publications.yml
-          if [ -n "$FILENAME" ]; then git add "docs/assets/papers/$FILENAME"; fi
-          git commit -m "Add publication: $TITLE (#${{ github.event.issue.number }})"
+          case "$OPERATION" in
+            update) VERB="Update";;
+            delete) VERB="Remove";;
+            *)      VERB="Add";;
+          esac
+          # -A stages the PDF add for a new paper *and* a PDF removal on delete/replace.
+          git add -A docs/_data/publications.yml docs/assets/papers
+          git commit -m "$VERB publication: $TITLE (#${{ github.event.issue.number }})"
           git push origin HEAD:main
           echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
@@ -96,27 +101,26 @@ jobs:
           GH_TOKEN: ${{ github.token }}
           ISSUE_NUMBER: ${{ github.event.issue.number }}
           DRY_RUN: ${{ steps.mode.outputs.dry_run }}
-          FILENAME: ${{ steps.build.outputs.filename }}
-          TITLE: ${{ steps.build.outputs.title }}
-          YEAR: ${{ steps.build.outputs.year }}
+          OPERATION: ${{ steps.build.outputs.operation }}
+          SUMMARY: ${{ steps.build.outputs.summary }}
           SHA: ${{ steps.commit.outputs.sha }}
           WARN: ${{ steps.build.outputs.warnings }}
         run: |
-          if [ -n "$FILENAME" ]; then
-            FILE_LINE=$(printf 'PDF saved as `%s`' "$FILENAME")
-          else
-            FILE_LINE='linked as an external paper (no PDF)'
-          fi
+          case "$OPERATION" in
+            update) VERB="update"; PAST="Updated";;
+            delete) VERB="delete"; PAST="Removed";;
+            *)      VERB="add";    PAST="Published";;
+          esac
           if [ -n "$WARN" ]; then
             WARN_BLOCK=$(printf '\n\n**Heads-up:**\n%s' "$WARN")
           else
             WARN_BLOCK=''
           fi
           if [ "$DRY_RUN" = "true" ]; then
-            BODY=$(printf '🔍 **Dry run passed — nothing committed.**\n\nWould add **%s** under %s (%s), and the file still parses.%s\n\nWhen it looks right, remove `publication-check` and add the **`publication`** label to publish for real.' "$TITLE" "$YEAR" "$FILE_LINE" "$WARN_BLOCK")
+            BODY=$(printf '🔍 **Dry run passed — nothing committed.**\n\nWould %s %s, and publications.yml still parses.%s\n\nWhen it looks right, remove `publication-check` and add the **`publication`** label to apply it.' "$VERB" "$SUMMARY" "$WARN_BLOCK")
             gh issue comment "$ISSUE_NUMBER" --body "$BODY"
           else
-            BODY=$(printf '✅ **Published %s** under %s — %s.\n\nCommitted in `%s`; the site rebuilds in a minute or two.%s' "$TITLE" "$YEAR" "$FILE_LINE" "$SHA" "$WARN_BLOCK")
+            BODY=$(printf '✅ **%s** %s.\n\nCommitted in `%s`; the site rebuilds in a minute or two.%s' "$PAST" "$SUMMARY" "$SHA" "$WARN_BLOCK")
             gh issue comment "$ISSUE_NUMBER" --body "$BODY"
             gh issue close "$ISSUE_NUMBER" --reason completed
           fi
