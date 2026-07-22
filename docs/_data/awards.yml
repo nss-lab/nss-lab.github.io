@@ -8,91 +8,91 @@
           recipients: "Jaehan Kim, Seung Ho Na, Minkyoo Song, Seungwon Shin, Sooel Son"
     - name: "2025 National Cyber Security Paper Contest"
       items:
-        - prize: "Encouragement Award"
+        - prize: "Encouragement Award (장려상)"
           recipients: "Myoungsung You, Isu Kim, Seungwon Shin · Jaehan Kim, Minkyoo Song, Seungwon Shin"
 - year: "2024"
   awards:
     - name: "2024 National Cyber Security Paper Contest"
       items:
-        - prize: "Encouragement Award"
+        - prize: "Encouragement Award (장려상)"
           recipients: "Myoungsung You, Seungwon Shin · Jaehan Kim, Seung Ho Na, Seungwon Shin"
 - year: "2023"
   awards:
     - name: "2023 National Cyber Security Paper Contest"
       items:
-        - prize: "Grand Prize"
+        - prize: "Grand Prize (대상)"
           recipients: "Myoungsung You, Jaehyun Nam, Seungwon Shin"
-        - prize: "Best Paper Award"
+        - prize: "Best Paper Award (최우수상)"
           recipients: "Jaehan Kim, Minkyoo Song, Youngjin Jin, Seungwon Shin"
-        - prize: "Excellence Award"
+        - prize: "Excellence Award (우수상)"
           recipients: "Suryeon Kim, Seung Ho Na, Seungwon Shin"
-        - prize: "Encouragement Award"
+        - prize: "Encouragement Award (장려상)"
           recipients: "Hanna Kim, Geon Choi, Seungwon Shin · Jaehan Kim, Minkyoo Song, Seungwon Shin · Seung Ho Na, Sumin Cho, Seungwon Shin · Minkyoo Song, Jaehan Kim, Seungwon Shin"
     - name: "2023 Samsung HumanTech Paper Award"
       items:
-        - prize: "Bronze Prize"
+        - prize: "Bronze Prize (동상)"
           recipients: "Jaehan Kim, Myoungsung You, Seungwon Shin, Jinwoo Kim"
 - year: "2022"
   awards:
     - name: "2022 National Cyber Security Paper Contest"
       items:
-        - prize: "Excellence Award"
+        - prize: "Excellence Award (우수상)"
           recipients: "Myoungsung You, Hyunmin Seo, Dongmin Choi, Jaehyun Nam, Seungwon Shin"
     - name: "2022 Samsung HumanTech Paper Award"
       items:
-        - prize: "Silver Prize"
+        - prize: "Silver Prize (은상)"
           recipients: "Jinwoo Kim, Seungwon Shin"
 - year: "2021"
   awards:
     - name: "2021 Samsung HumanTech Paper Award"
       items:
-        - prize: "Silver Prize"
+        - prize: "Silver Prize (은상)"
           recipients: "Taejune Park, Myoungsung You, Geon Choi, Youngjin Jin, Seungwon Shin"
     - name: "2021 National Cyber Security Paper Contest"
       items:
-        - prize: "Excellence Award"
+        - prize: "Excellence Award (우수상)"
           recipients: "Jinho Choi, Seungwon Shin"
-        - prize: "Encouragement Award"
+        - prize: "Encouragement Award (장려상)"
           recipients: "Minjae Seo, Jinwoo Kim, Jaehan Kim, Taejune Park, Myoungsung You, Seungwon Shin"
     - name: "5th Financial Security Institute (FSI) Paper Contest"
       items:
-        - prize: "Best Paper Award"
+        - prize: "Best Paper Award (최우수상)"
           recipients: "Seung Ho Na, Hanna Kim, Seungwon Shin"
     - name: "2021 KIISC Honam Branch Paper Contest"
       items:
-        - prize: "Best Paper Award"
+        - prize: "Best Paper Award (최우수상)"
           recipients: "Myoungsung You, Jinwoo Kim, Taejune Park, Seungwon Shin"
 - year: "2020"
   awards:
     - name: "2020 Samsung HumanTech Paper Award"
       items:
-        - prize: "Silver Prize"
+        - prize: "Silver Prize (은상)"
           recipients: "Jinwoo Kim, Jaehyun Nam, Suyeol Lee, Seungwon Shin"
     - name: "2020 National Cyber Security Paper Contest"
       items:
-        - prize: "Excellence Award"
+        - prize: "Excellence Award (우수상)"
           recipients: "Suyeol Lee, Seung Ho Na, Seunghyeon Lee, Geon Choi, Minjae Seo, Seungwon Shin"
     - name: "4th Financial Security Institute (FSI) Paper Contest"
       items:
-        - prize: "Grand Prize"
+        - prize: "Grand Prize (대상)"
           recipients: "Seung Ho Na, Hyeonggwon Hong, Seungwon Shin"
 - year: "2019"
   awards:
     - name: "2019 National Cyber Security Paper Contest"
       items:
-        - prize: "Best Paper Award"
+        - prize: "Best Paper Award (최우수상)"
           recipients: "Seunghyeon Lee, Hyunmin Seo, Hwanjo Heo, Seungwon Shin, Anduo Wang"
-        - prize: "Encouragement Award"
+        - prize: "Encouragement Award (장려상)"
           recipients: "Heedo Kang, Changhoon Yoon, Sooel Son, Seungwon Shin"
 - year: "2018"
   awards:
     - name: "2018 National Cyber Security Paper Contest"
       items:
-        - prize: "Best Paper Award"
+        - prize: "Best Paper Award (최우수상)"
           recipients: "Heedo Kang, Seungwon Shin, Vinod Yegneswaran, Shalini Ghosh, Phillip Porras"
-        - prize: "Excellence Award"
+        - prize: "Excellence Award (우수상)"
           recipients: "Yeonkeun Kim, Taejune Park, Seungwon Shin"
     - name: "2018 Korea Computer Congress (KCC)"
       items:
-        - prize: "Outstanding Paper Award"
+        - prize: "Outstanding Paper Award (우수논문상)"
           recipients: "Gilho Lee, Taejune Park, Minsu Kim, Seungwon Shin, Insik Shin"
