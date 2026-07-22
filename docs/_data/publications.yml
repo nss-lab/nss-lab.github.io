@@ -89,7 +89,7 @@
       info: "ACM ASIA Conference on Computer and Communications Security, 2025"
       pdf: "asiaccs2025-kim.pdf"
     - venue: "INFOCOM"
-      title: "MUFLLER: Secure Tor Traffic Obfuscation with Dynamic Connection Shuffling and Distributing"
+      title: "MUFFLER: Secure Tor Traffic Obfuscation with Dynamic Connection Shuffling and Splitting"
       authors: "Minjae Seo*, Myoungsung You*, Jaehan Kim, Taejune Park, Seungwon Shin, Jinwoo Kim (* Co-first author)"
       info: "IEEE International Conference on Computer Communications, 2025"
       pdf: "infocom2025-seo.pdf"

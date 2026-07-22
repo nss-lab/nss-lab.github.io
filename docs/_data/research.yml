@@ -27,21 +27,22 @@
 - title: Security
   image: security.svg
   summary: >-
-    Revealing and defending against threats across networks, the web, and
+    Revealing and defending against threats across networks, hardware, and
     blockchains — through deep system analysis, side-channel research, and
-    large-scale measurement.
+    threat forensics.
   detail: >-
     Our founding mission is to reveal threats and defend networked systems. We pair
-    deep system understanding with large-scale measurement: tracing intrusions to
-    their root cause via security provenance (<strong>SECTRACER</strong>), fuzzing and
-    fingerprinting SDN/SD-WAN control planes (<strong>Ambusher</strong>,
+    deep system understanding with offensive and defensive research: tracing
+    intrusions to their root cause via security provenance (<strong>SECTRACER</strong>),
+    fuzzing and fingerprinting SDN/SD-WAN control planes (<strong>Ambusher</strong>,
     <strong>Heimdallr</strong>), uncovering micro-architectural and timing side channels
     (<strong>AVXProbe</strong>, <strong>AVX-TSCHA</strong>), hardening anonymity networks
-    and topology against deanonymization (<strong>MUFLLER</strong>,
-    <strong>EqualNet</strong>), and measuring permissionless blockchains and their abuse
-    (<strong>Partitioning Ethereum</strong>, illicit-Bitcoin detection).
+    against deanonymization and network topology against inference
+    (<strong>MUFFLER</strong>, <strong>EqualNet</strong>), and attacking permissionless
+    blockchains and detecting their abuse (<strong>Partitioning Ethereum</strong>,
+    <strong>CENSor</strong>).
   topics:
-    - "Network, web & SDN security — <strong>SECTRACER</strong>, <strong>Ambusher</strong>"
+    - "Network & SDN security — <strong>SECTRACER</strong>, <strong>Ambusher</strong>"
     - "Side-channel & micro-architectural attacks — <strong>AVXProbe</strong>, <strong>AVX-TSCHA</strong>"
     - "Blockchain & threat intelligence — <strong>Partitioning Ethereum</strong>, <strong>Vulcan</strong>"
 - title: System
@@ -50,15 +51,16 @@
     High-performance systems that are secure by construction — SmartNIC acceleration,
     confidential serverless, and secure container and in-network systems.
   detail: >-
-    We build systems that deliver security and performance together, often pushing
-    enforcement into hardware and the network data path. Recent work accelerates
-    service-mesh ingress with SmartNICs (<strong>HybridMesh</strong>,
-    <strong>HardMesh</strong>), runs serverless functions inside trusted execution with
-    fast snapshots (<strong>AccelFaaS</strong>, <strong>TDSnap</strong>,
-    <strong>Cryonics</strong>), gives containers RDMA-aware and hardware-isolated
-    networking (<strong>RDNet</strong>, <strong>Hyperion</strong>,
-    <strong>HardWhale</strong>), and embeds security into SDN/NFV with reconfigurable
-    hardware for line-rate inspection (<strong>Reinhardt</strong>).
+    Systems are now expected to be fast and secure at once. We study how to deliver
+    both without compromise, using hardware/software co-design to make security
+    efficient. Our work accelerates service-mesh ingress on SmartNICs
+    (<strong>HybridMesh</strong>, <strong>HardMesh</strong>), gives containers
+    RDMA-aware and hardware-isolated networking (<strong>RDNet</strong>,
+    <strong>Hyperion</strong>, <strong>HardWhale</strong>), and embeds line-rate
+    inspection into SDN/NFV with reconfigurable hardware (<strong>Reinhardt</strong>).
+    In parallel, we cut the overhead of confidential serverless with fast snapshots
+    and acceleration (<strong>AccelFaaS</strong>, <strong>TDSnap</strong>,
+    <strong>Cryonics</strong>).
   topics:
     - "SmartNIC & service-mesh acceleration — <strong>HybridMesh</strong>, <strong>HardMesh</strong>"
     - "Confidential serverless / FaaS — <strong>AccelFaaS</strong>, <strong>TDSnap</strong>, <strong>Cryonics</strong>"
