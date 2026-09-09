@@ -1,5 +1,11 @@
 # Homepage news feed (most recent first). To add an item, copy a block to the top.
 # Fields: date (free text), title, venue (optional), link (optional URL).
+- date: September 2026
+  title: "SkillMutator: Benchmarking and Defending Language-and-Code Cross-modal Attacks on LLM Agent Skills"
+  venue: Accepted to ACSAC 2026
+- date: September 2026
+  title: "SWIFT: Robust Code Watermarking via Structural Canonicalization and LLM-Based Rewriting"
+  venue: Accepted to ACSAC 2026
 - date: May 2026
   title: "PC²: Politically Controversial Content Generation via Jailbreaking Attacks on GPT-based Text-to-Image Models"
   venue: Accepted to CCS 2026
