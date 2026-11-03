@@ -1,6 +1,12 @@
 # Full publication list grouped by year (newest first).
 # Each paper: venue, title, authors, info; plus pdf (file in assets/papers/) OR ext (external URL).
 # Add a paper by copying a block under the right year.
+- year: "2027"
+  papers:
+    - venue: "HPCA"
+      title: "PRISM: Closing the ISA Semantic Gap for Match-Action Processing on SmartNIC Cores"
+      authors: "Ziho Shin, Seungwon Shin, Myoungsung You"
+      info: "IEEE International Conference on High-Performance Computer Architecture (HPCA), 2027 (To appear)"
 - year: "2026"
   papers:
     - venue: "ACSAC"

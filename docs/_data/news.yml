@@ -1,5 +1,8 @@
 # Homepage news feed (most recent first). To add an item, copy a block to the top.
 # Fields: date (free text), title, venue (optional), link (optional URL).
+- date: November 2026
+  title: "PRISM: Closing the ISA Semantic Gap for Match-Action Processing on SmartNIC Cores"
+  venue: Accepted to HPCA 2027
 - date: September 2026
   title: "SkillMutator: Benchmarking and Defending Language-and-Code Cross-modal Attacks on LLM Agent Skills"
   venue: Accepted to ACSAC 2026
